@@ -70,9 +70,9 @@ val status: String = generateCertChainRs4096Input(
     signedResponse = "<signed response string>",
     tbs = "<to-be-signed data>",
     issuerCertPath = "/path/to/issuer.crt",
-    smtServer = null,           // optional SMT server URL
-    issuerId = "<issuer-id>",
-    outputDir = context.filesDir.absolutePath
+    smtSnapshotPath = null,     // optional path to g3-tree-snapshot.json.gz; pass null to skip SMT revocation
+    outputDir = context.filesDir.absolutePath,
+    challenge = "<challenge-string>"
 )
 ```
 
@@ -92,8 +92,8 @@ Download and extract the following files:
 |---|---|
 | `cert_chain_rs4096_proving.key` | [`cert_chain_rs4096_proving.key.gz`](https://github.com/zkmopro/zkID/releases/download/latest/cert_chain_rs4096_proving.key.gz) |
 | `cert_chain_rs4096_verifying.key` | [`cert_chain_rs4096_verifying.key.gz`](https://github.com/zkmopro/zkID/releases/download/latest/cert_chain_rs4096_verifying.key.gz) |
-| `device_sig_rs2048_proving.key` | [`device_sig_rs2048_proving.key.gz`](https://github.com/zkmopro/zkID/releases/download/latest/device_sig_rs2048_proving.key.gz) |
-| `device_sig_rs2048_verifying.key` | [`device_sig_rs2048_verifying.key.gz`](https://github.com/zkmopro/zkID/releases/download/latest/device_sig_rs2048_verifying.key.gz) |
+| `user_sig_rs2048_proving.key` | [`user_sig_rs2048_proving.key.gz`](https://github.com/zkmopro/zkID/releases/download/latest/user_sig_rs2048_proving.key.gz) |
+| `user_sig_rs2048_verifying.key` | [`user_sig_rs2048_verifying.key.gz`](https://github.com/zkmopro/zkID/releases/download/latest/user_sig_rs2048_verifying.key.gz) |
 
 After extracting, place all `.key` files into `documentsPath/keys/`. Example using `OkHttp` and `GZIPInputStream`:
 
@@ -111,8 +111,8 @@ suspend fun downloadKeys(documentsPath: String) {
     val files = listOf(
         "cert_chain_rs4096_proving.key",
         "cert_chain_rs4096_verifying.key",
-        "device_sig_rs2048_proving.key",
-        "device_sig_rs2048_verifying.key"
+        "user_sig_rs2048_proving.key",
+        "user_sig_rs2048_verifying.key"
     )
 
     for (name in files) {
@@ -256,9 +256,9 @@ generateCertChainRs4096Input(
     signedResponse = signedResponse,
     tbs = tbs,
     issuerCertPath = issuerCertPath,
-    smtServer = null,
-    issuerId = issuerId,
-    outputDir = documentsPath
+    smtSnapshotPath = null,
+    outputDir = documentsPath,
+    challenge = challenge
 )
 
 // 2. Download pre-built keys (only needed once)

@@ -1,4 +1,4 @@
-[![](https://jitpack.io/v/zkmopro/OpenACKotlin.svg)](https://jitpack.io/#zkmopro/OpenACKotlin)
+[![](https://jitpack.io/v/privacy-ethereum/OpenACKotlin.svg)](https://jitpack.io/#privacy-ethereum/OpenACKotlin)
 
 # OpenACKotlin
 
@@ -6,7 +6,7 @@ A Kotlin/Android library for generating and verifying zero-knowledge proofs for 
 
 ## Getting OpenACKotlin via JitPack
 
-To get this library from GitHub using [JitPack](https://jitpack.io/#zkmopro/OpenACKotlin):
+To get this library from GitHub using [JitPack](https://jitpack.io/#privacy-ethereum/OpenACKotlin):
 
 **Step 1.** Add the JitPack repository to your `settings.gradle.kts` at the end of repositories:
 
@@ -24,11 +24,11 @@ dependencyResolutionManagement {
 
 ```kotlin
 dependencies {
-    implementation("com.github.zkmopro:OpenACKotlin:0.2.0")
+    implementation("com.github.privacy-ethereum:OpenACKotlin:0.2.0")
 }
 ```
 
-Checkout the [JitPack page](https://jitpack.io/#zkmopro/OpenACKotlin) for more available versions.
+Checkout the [JitPack page](https://jitpack.io/#privacy-ethereum/OpenACKotlin) for more available versions.
 
 **Note:** If you're using an Android template from `mopro create`, comment out these UniFFI dependencies in your build file to prevent duplicate class errors.
 
@@ -84,16 +84,16 @@ Returns a status string on success. Throws `ZkProofException` on failure.
 
 ### Downloading Pre-built Keys
 
-Instead of generating keys locally with `setupKeys`, you can download pre-built keys from the [zkID releases](https://github.com/zkmopro/zkID/releases/download/latest/) and place them in `documentsPath/keys/`.
+Instead of generating keys locally with `setupKeys`, you can download pre-built keys from the [zkID RSA-X.509-Cert latest release](https://github.com/privacy-ethereum/zkID/releases/tag/RSA-X.509-Cert-latest) and place them in `documentsPath/keys/`.
 
 Download and extract the following files:
 
 | File | Download URL |
 |---|---|
-| `cert_chain_rs4096_proving.key` | [`cert_chain_rs4096_proving.key.gz`](https://github.com/zkmopro/zkID/releases/download/latest/cert_chain_rs4096_proving.key.gz) |
-| `cert_chain_rs4096_verifying.key` | [`cert_chain_rs4096_verifying.key.gz`](https://github.com/zkmopro/zkID/releases/download/latest/cert_chain_rs4096_verifying.key.gz) |
-| `user_sig_rs2048_proving.key` | [`user_sig_rs2048_proving.key.gz`](https://github.com/zkmopro/zkID/releases/download/latest/user_sig_rs2048_proving.key.gz) |
-| `user_sig_rs2048_verifying.key` | [`user_sig_rs2048_verifying.key.gz`](https://github.com/zkmopro/zkID/releases/download/latest/user_sig_rs2048_verifying.key.gz) |
+| `cert_chain_rs4096_proving.key` | [`cert_chain_rs4096_proving.key.gz`](https://github.com/privacy-ethereum/zkID/releases/download/RSA-X.509-Cert-latest/cert_chain_rs4096_proving.key.gz) |
+| `cert_chain_rs4096_verifying.key` | [`cert_chain_rs4096_verifying.key.gz`](https://github.com/privacy-ethereum/zkID/releases/download/RSA-X.509-Cert-latest/cert_chain_rs4096_verifying.key.gz) |
+| `user_sig_rs2048_proving.key` | [`user_sig_rs2048_proving.key.gz`](https://github.com/privacy-ethereum/zkID/releases/download/RSA-X.509-Cert-latest/user_sig_rs2048_proving.key.gz) |
+| `user_sig_rs2048_verifying.key` | [`user_sig_rs2048_verifying.key.gz`](https://github.com/privacy-ethereum/zkID/releases/download/RSA-X.509-Cert-latest/user_sig_rs2048_verifying.key.gz) |
 
 After extracting, place all `.key` files into `documentsPath/keys/`. Example using `OkHttp` and `GZIPInputStream`:
 
@@ -106,7 +106,7 @@ import java.util.zip.GZIPInputStream
 suspend fun downloadKeys(documentsPath: String) {
     val keysDir = File(documentsPath, "keys").also { it.mkdirs() }
     val client = OkHttpClient()
-    val baseUrl = "https://github.com/zkmopro/zkID/releases/download/latest"
+    val baseUrl = "https://github.com/privacy-ethereum/zkID/releases/tag/RSA-X.509-Cert-latest"
 
     val files = listOf(
         "cert_chain_rs4096_proving.key",

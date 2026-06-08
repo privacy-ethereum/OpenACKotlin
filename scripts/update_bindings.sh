@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-RELEASE_URL="https://github.com/zkmopro/zkID/releases/download/latest/MoproAndroidBindings.zip"
+RELEASE_URL="https://github.com/privacy-ethereum/zkID/releases/download/RSA-X.509-Cert-latest/MoproAndroidBindings.zip"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 JNI_DIR="$REPO_ROOT/lib/src/main/jniLibs/arm64-v8a"

@@ -53,7 +53,6 @@ import uniffi.mopro.proveCertChainRs4096
 import uniffi.mopro.proveUserSigRs2048
 import uniffi.mopro.verifyCertChainRs4096
 import uniffi.mopro.verifyUserSigRs2048
-import uniffi.mopro.linkVerify
 import uniffi.mopro.runCompleteBenchmark
 import uniffi.mopro.BenchmarkResults
 import uniffi.mopro.ProofResult
@@ -191,14 +190,6 @@ Verifies the proof for the `user_sig_rs2048` circuit stored in `documentsPath`.
 val isValid: Boolean = verifyUserSigRs2048(documentsPath)
 ```
 
-### `linkVerify`
-
-Verifies proofs for both circuits together.
-
-```kotlin
-val isValid: Boolean = linkVerify(documentsPath)
-```
-
 All verify functions return `true` if the proof is valid, `false` otherwise. Throws `ZkProofException` on error.
 
 ### `runCompleteBenchmark`
@@ -286,8 +277,10 @@ val userProof = proveUserSigRs2048(documentsPath)
 println("user_sig proved in ${userProof.proveMs} ms")
 
 // 4. Verify proofs
-val valid = linkVerify(documentsPath)
-println("Proofs valid: $valid")
+val certValid = verifyCertChainRs4096(documentsPath)
+val userValid = verifyUserSigRs2048(documentsPath)
+println("cert_chain valid: $certValid")
+println("user_sig valid: $userValid")
 ```
 
 ## How to Build the Package

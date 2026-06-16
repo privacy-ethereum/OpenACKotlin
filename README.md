@@ -1,12 +1,12 @@
-[![](https://jitpack.io/v/privacy-ethereum/OpenACKotlin.svg)](https://jitpack.io/#privacy-ethereum/OpenACKotlin)
+[![](https://jitpack.io/v/privacy-ethereum/openac-rsa-x509-kotlin.svg)](https://jitpack.io/#privacy-ethereum/openac-rsa-x509-kotlin)
 
-# OpenACKotlin
+# openac-rsa-x509-kotlin
 
 A Kotlin/Android library for generating and verifying zero-knowledge proofs for two RS circuits (`cert_chain_rs4096` and `user_sig_rs2048`) using native Rust code via UniFFI and JNI.
 
 ## Getting OpenACKotlin via JitPack
 
-To get this library from GitHub using [JitPack](https://jitpack.io/#privacy-ethereum/OpenACKotlin):
+To get this library from GitHub using [JitPack](https://jitpack.io/#privacy-ethereum/openac-rsa-x509-kotlin):
 
 **Step 1.** Add the JitPack repository to your `settings.gradle.kts` at the end of repositories:
 
@@ -24,11 +24,11 @@ dependencyResolutionManagement {
 
 ```kotlin
 dependencies {
-    implementation("com.github.privacy-ethereum:OpenACKotlin:0.2.0")
+    implementation("com.github.privacy-ethereum:openac-rsa-x509-kotlin:0.2.0")
 }
 ```
 
-Checkout the [JitPack page](https://jitpack.io/#privacy-ethereum/OpenACKotlin) for more available versions.
+Checkout the [JitPack page](https://jitpack.io/#privacy-ethereum/openac-rsa-x509-kotlin) for more available versions.
 
 **Note:** If you're using an Android template from `mopro create`, comment out these UniFFI dependencies in your build file to prevent duplicate class errors.
 
